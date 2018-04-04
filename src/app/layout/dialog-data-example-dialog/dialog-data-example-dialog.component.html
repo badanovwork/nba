@@ -1,0 +1,23 @@
+<div class="content" *ngIf ="data">
+  <mat-card  class="example-card">
+    <mat-card-content>
+      <img mat-card-image src="{{data.link}}" onerror="this.src = '../../../assets/no-photo.png'">
+      <h2>{{data.name}}</h2>
+      <p>{{data.teamName}}</p>
+      <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile><span>MPG:&nbsp;</span> {{data.minutesPerGame}}&nbsp;min</mat-grid-tile>
+        <mat-grid-tile><span>FTP:&nbsp;</span> {{data.freeThrowPercentage}}%</mat-grid-tile>
+        <mat-grid-tile><span>PPG:&nbsp;</span> {{data.pointsPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>APG:&nbsp;</span> {{data.assistsPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>SPG:&nbsp;</span> {{data.stealsPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>BPG:&nbsp;</span> {{data.blocksPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>TPG:&nbsp;</span> {{data.turnoversPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>SPG:&nbsp;</span> {{data.stealsPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>TPAPD:&nbsp;</span> {{data.threePointAttemptedPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>TPMPD:&nbsp;</span> {{data.threePointAttemptedPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>FGAPG:&nbsp;</span> {{data.fieldGoalsAttemptedPerGame}}</mat-grid-tile>
+        <mat-grid-tile><span>FGMPG:&nbsp;</span> {{data.fieldGoalsMadePerGame}}</mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</div>

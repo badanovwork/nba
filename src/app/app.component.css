@@ -1,0 +1,7 @@
+.centre {
+  position: absolute;
+  left: 45%;
+  top: 35%;
+  opacity: 1;
+  z-index: 500000;
+}

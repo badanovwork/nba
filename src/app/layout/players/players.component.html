@@ -1,0 +1,32 @@
+<div class="loading-overlay" >
+  <mat-progress-bar mode="determinate" [value]="bufferValue"></mat-progress-bar>
+</div>
+<div class="content" >
+  <mat-paginator [length]="players.length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageEvent = $event">
+  </mat-paginator>
+<div *ngIf="pageEvent">
+   <mat-card class="example-card" *ngFor="let player of players.slice(pageEvent.pageIndex * pageEvent.pageSize, pageEvent.pageIndex * pageEvent.pageSize + pageEvent.pageSize)">
+      <mat-card-content>
+        <img mat-card-image src="{{player.link}}" onerror="this.src = '../../../assets/no-photo.png'">
+        <h2>{{player.name}}</h2>
+        <p>{{player.teamName}}</p>
+        <mat-grid-list cols="2" rowHeight="50px">
+          <mat-grid-tile><span>MPG:&nbsp;</span> {{player.minutesPerGame}}&nbsp;min</mat-grid-tile>
+          <mat-grid-tile><span>FTP:&nbsp;</span> {{player.freeThrowPercentage}}%</mat-grid-tile>
+          <mat-grid-tile><span>PPG:&nbsp;</span> {{player.pointsPerGame}}</mat-grid-tile>
+          <mat-grid-tile><span>APG:&nbsp;</span> {{player.assistsPerGame}}</mat-grid-tile>
+          <mat-grid-tile><span>SPG:&nbsp;</span> {{player.stealsPerGame}}</mat-grid-tile>
+          <mat-grid-tile><span>BPG:&nbsp;</span> {{player.blocksPerGame}}</mat-grid-tile>
+        </mat-grid-list>
+        <mat-icon [style.color]="player.favorite ==true?'red':'black'" (click)="getLocal(player)" class="example-icon">favorite</mat-icon>
+      </mat-card-content>
+    </mat-card>
+</div>
+  <div class="clear"></div>
+
+</div>
+
+
