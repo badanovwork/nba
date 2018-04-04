@@ -18,7 +18,7 @@
           <mat-grid-tile><span>SPG:&nbsp;</span> {{player.stealsPerGame}}</mat-grid-tile>
           <mat-grid-tile><span>BPG:&nbsp;</span> {{player.blocksPerGame}}</mat-grid-tile>
         </mat-grid-list>
-        <mat-icon [style.color]="player.favorite ==true?'red':'black'" (click)="getLocal(player)" class="example-icon">favorite</mat-icon>
+        <mat-icon [style.color]="player.favorite ==true?'red':'gray'" (click)="getLocal(player)" class="example-icon">favorite</mat-icon>
       </mat-card-content>
     </mat-card>
 </div>
