@@ -24,4 +24,17 @@
 .clear{
   clear: left;
 }
-
+.card-photo{
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+.spinner{
+  position: absolute;
+  left: 30%;
+  top: 15%;
+}
+.card-photo-img{
+  background: white;
+  position: absolute;
+}

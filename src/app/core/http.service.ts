@@ -30,8 +30,6 @@ export class HttpService {
       });
   }
 
-
-
   getPlayersStatsTeam(value): Observable<Players[]> {
     let tempArr = this.localStorage.getLocalStorage();
     this.showLoader();
@@ -143,10 +141,6 @@ export class HttpService {
         this.onEnd ();
       });
   }
-
-
-
-
 
   private showLoader (): void {
     this.loaderService.show ();
