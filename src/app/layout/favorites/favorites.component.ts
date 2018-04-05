@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Players } from '../../models/players';
-import {LocalStorageService} from '../../core/local-storage.service';
+import {Component, OnInit} from '@angular/core';
+import {Players} from '../../models/players';
 
 @Component({
   selector: 'app-favorites',
@@ -9,12 +8,10 @@ import {LocalStorageService} from '../../core/local-storage.service';
 })
 export class FavoritesComponent implements OnInit {
 
-  players: Players[] = [];
-
-  constructor() { }
+  public players: Players[] = [];
 
   ngOnInit() {
-    let localValue = localStorage.getItem('players');
+    const localValue = localStorage.getItem('players');
     this.players = JSON.parse(localValue);
   }
 }

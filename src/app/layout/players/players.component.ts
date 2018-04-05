@@ -1,7 +1,6 @@
 import {Component, Input, OnInit, AfterViewInit} from '@angular/core';
 import {Players} from '../../models/players';
 import {HttpService} from '../../core/http.service';
-import {LocalStorageService} from '../../core/local-storage.service';
 import {PageEvent} from '@angular/material';
 
 @Component({
@@ -9,6 +8,7 @@ import {PageEvent} from '@angular/material';
   templateUrl: './players.component.html',
   styleUrls: ['./players.component.css']
 })
+
 export class PlayersComponent implements OnInit, AfterViewInit {
 
   @Input() bufferValue = 0;
@@ -18,7 +18,7 @@ export class PlayersComponent implements OnInit, AfterViewInit {
   public pageSizeOptions = [5, 10, 25, 100];
   public pageEvent: PageEvent = {pageIndex: 0, pageSize: this.pageSize, length: this.players.length};
 
-  constructor(private http: HttpService, private localStorage: LocalStorageService) { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
     this.http.getPlayers().subscribe(data => this.players = data);
@@ -26,14 +26,5 @@ export class PlayersComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.bufferValue = 100;
-  }
-
-  getLocal(value) {
-    value.favorite = !value.favorite;
-    if (value.favorite) {
-      this.localStorage.pushLocalStorage(value);
-    } else {
-      this.localStorage.delLocalStorage(value);
-    }
   }
 }

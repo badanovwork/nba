@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {ToggleService} from '../core/toggle.service';
 
@@ -7,10 +7,10 @@ import {ToggleService} from '../core/toggle.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css']
 })
-export class LayoutComponent implements OnInit, OnDestroy {
+export class LayoutComponent implements OnDestroy {
 
-  checked: boolean;
-  subscription: Subscription;
+  private checked: boolean;
+  private subscription: Subscription;
 
   constructor(private toggleService: ToggleService) {
     this.subscription = toggleService.checked$.subscribe(
@@ -21,9 +21,5 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  ngOnInit() {
-
   }
 }

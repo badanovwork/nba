@@ -7,10 +7,9 @@ export class ToggleService {
   constructor() { }
 
   private boolSource = new Subject<boolean>();
-  checked$ = this.boolSource.asObservable();
+  public checked$ = this.boolSource.asObservable();
 
-  showSelected(value: boolean) {
+  public showSelected(value: boolean): void {
     this.boolSource.next(value);
   }
-
 }

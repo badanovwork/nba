@@ -2,7 +2,9 @@
   <a href=""><img src="../../../assets/logo.png" class="logo"></a>
   <span class="logo-text">Stats</span>
   <span class="example-spacer"></span>
-  <span class="mat-slide-toggle-content">Teams</span>
-  <mat-slide-toggle (click)="showSelected()" color="primary">Players</mat-slide-toggle>
-  <a routerLink="/favorites"><mat-icon class="example-icon">favorite</mat-icon></a>
+  <div *ngIf="router.url === '/'" >
+    <span class="mat-slide-toggle-content">Teams</span>
+    <mat-slide-toggle (click)="showSelected()" color="primary">Players</mat-slide-toggle>
+  </div>
+  <a routerLink="/favorites" ><mat-icon (click)="showSelected()" class="example-icon">favorite</mat-icon></a>
 </mat-toolbar>

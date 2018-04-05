@@ -6,6 +6,7 @@
 }
 .example-icon {
   padding: 0 14px;
+  cursor: pointer;
 }
 .example-spacer {
   flex: 1 1 auto;
@@ -24,6 +25,11 @@
 .clear{
   clear: left;
 }
+.content{
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .card-photo{
   height: 250px;
   overflow: hidden;
@@ -37,4 +43,17 @@
 .card-photo-img{
   background: white;
   position: absolute;
+}
+.example-card {
+  max-width: 300px;
+  margin: 20px;
+  float: left;
+}
+.mat-card {
+  height: 480px;
+  width: 300px;
+}
+
+.mat-figure {
+  justify-content: left!important;
 }

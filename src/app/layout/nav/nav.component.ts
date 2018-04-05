@@ -1,28 +1,22 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {HttpService} from '../../core/http.service';
+import {Component, Input} from '@angular/core';
 import {ToggleService} from '../../core/toggle.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
 
-  @Input()
-  checked: boolean;
+  @Input() checked: boolean;
 
-  constructor(private http: HttpService, private toggleService: ToggleService) {
+  constructor(private toggleService: ToggleService, public router: Router) {
     this.checked = false;
   }
 
-  showSelected() {
+  public showSelected(): void {
     this.checked = !this.checked;
     this.toggleService.showSelected(this.checked);
   }
-
-  ngOnInit() {
-
-  }
-
 }

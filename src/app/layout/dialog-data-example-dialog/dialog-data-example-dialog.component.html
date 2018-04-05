@@ -19,5 +19,7 @@
         <mat-grid-tile><span>FGMPG:&nbsp;</span> {{data.fieldGoalsMadePerGame}}</mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
+    <mat-icon [style.color]="data.favorite ==true?'red':'gray'" (click)="getLocal(data)" class="example-icon">favorite</mat-icon>
   </mat-card>
 </div>
+<mat-icon (click)="onNoClick()" class="example-icon">close</mat-icon>

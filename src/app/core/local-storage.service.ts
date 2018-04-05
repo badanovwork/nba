@@ -3,32 +3,27 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LocalStorageService {
 
-  arr: any[] = this.getLocalStorage();
+  private arr: any[] = this.getLocalStorage();
+  private temp: any[];
 
-  constructor() { }
-
-  pushLocalStorage(value) {
-      this.arr.push(value);
-      let str = JSON.stringify(this.arr);
-      localStorage.setItem('players', str);
-  }
-
-  delLocalStorage(value) {
-    let temp = this.arr.filter(function (item) {
-      return value.name !== item.name;
-    });
-    this.arr = temp;
-    let str = JSON.stringify(this.arr);
+  public pushLocalStorage(value) {
+    this.arr.push(value);
+    const str = JSON.stringify(this.arr);
     localStorage.setItem('players', str);
   }
 
-  getLocalStorage() {
-    let localStorageItem = localStorage.getItem('players');
-    let arrLocal = JSON.parse(localStorageItem);
-    if (arrLocal !== null) {
-      return arrLocal;
-    } else {
-      return [];
-    }
+  public delLocalStorage(value) {
+    this.temp = this.arr.filter(function (item) {
+      return value.name !== item.name;
+    });
+    this.arr =  this.temp;
+    const str = JSON.stringify(this.arr);
+    localStorage.setItem('players', str);
+  }
+
+  public getLocalStorage() {
+    const localStorageItem = localStorage.getItem('players');
+    const arrLocal = JSON.parse(localStorageItem);
+    return ( arrLocal !== null) ? arrLocal : [];
   }
 }

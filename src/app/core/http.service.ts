@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse} from '@angular/common/http';
-import { Team} from '../models/team';
-import { Players} from '../models/players';
-import { LoaderService} from './loader/loader.service';
-
-import { Observable} from 'rxjs/Observable';
-import { ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Team} from '../models/team';
+import {Players} from '../models/players';
+import {LoaderService} from './loader/loader.service';
+import {Observable} from 'rxjs/Observable';
+import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/finally';
-import { catchError, retry } from 'rxjs/operators';
+import {catchError, retry} from 'rxjs/operators';
 import {LocalStorageService} from './local-storage.service';
 
 @Injectable()
 export class HttpService {
+  constructor(private http: HttpClient,
+              private loaderService: LoaderService,
+              private localStorage: LocalStorageService) { }
 
-  constructor(private http: HttpClient, private loaderService: LoaderService, private localStorage: LocalStorageService) { }
-
-  getTeamsData(): Observable<Team[]> {
+  public getTeamsData(): Observable<Team[]> {
     this.showLoader();
     return this.http
       .get<Team[]> ('teams-description.json')
@@ -30,8 +30,8 @@ export class HttpService {
       });
   }
 
-  getPlayersStatsTeam(value): Observable<Players[]> {
-    let tempArr = this.localStorage.getLocalStorage();
+  public getPlayersStatsTeam(value): Observable<Players[]> {
+    const tempArr = this.localStorage.getLocalStorage();
     this.showLoader();
     return this.http
       .get<any>(`https://nba-players.herokuapp.com/players-stats-teams/${value}`)
@@ -86,8 +86,8 @@ export class HttpService {
       });
   }
 
-  getPlayers(): Observable<Players[]> {
-    let tempArr = this.localStorage.getLocalStorage();
+  public getPlayers(): Observable<Players[]> {
+    const tempArr = this.localStorage.getLocalStorage();
     this.showLoader();
     return this.http
       .get<any>(`https://nba-players.herokuapp.com/players-stats`)
